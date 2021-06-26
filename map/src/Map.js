@@ -1,8 +1,13 @@
 import GoogleMapReact from 'google-map-react';
 import React from 'react';
+import MarkerImg from './images/simple_marker.png'
 
 const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Marker = () =>
+  <div>
+    <img src={MarkerImg} alt="marker" width="60px" />
+  </div>
+
 
 class Map extends React.Component {
   render() {
@@ -13,11 +18,7 @@ class Map extends React.Component {
           defaultCenter={{ lat: 35.5362755, lng: 139.6355183 }}
           defaultZoom={17}
         >
-          <AnyReactComponent
-            lat={35.5362755}
-            lng={139.6355183}
-            text="My Marker"
-          />
+          <Marker lat={35.5362755} lng={139.6355183} />
         </GoogleMapReact>
       </div>
     );
