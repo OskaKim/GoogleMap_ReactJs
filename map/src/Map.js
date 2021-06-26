@@ -1,13 +1,13 @@
 import GoogleMapReact from 'google-map-react';
 import React from 'react';
-import MarkerImg from './images/simple_marker.png'
+import MarkerImg from './images/simple_marker.png';
+import './Map.css';
 
 const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 const Marker = () =>
   <div>
-    <img src={MarkerImg} alt="marker" width="60px" />
+    <img src={MarkerImg} className="Marker" alt="marker" />
   </div>
-
 
 class Map extends React.Component {
   render() {
