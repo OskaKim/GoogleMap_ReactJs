@@ -6,9 +6,10 @@ const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 
 class Map extends React.Component {
   state = {
-    markers: [{lat: 35.53578658683482, lng: 139.63568459695895}],
+    markers: [],
   }
 
+  // 클릭한 곳에 마커가 추가됨
   addMarker = async (data) => {
     this.setState({
       markers: [...this.state.markers, { lat: data.lat, lng: data.lng }]
@@ -18,6 +19,8 @@ class Map extends React.Component {
 
   render() {
     const { markers } = this.state;
+    const renderMarkers = markers.map((marker) => (<Marker lat={marker.lat} lng={marker.lng} />))
+
     return (
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
@@ -26,13 +29,8 @@ class Map extends React.Component {
           defaultZoom={17}
           onClick={this.addMarker}
         >
-          <Marker lat={markers[0].lat} lng={markers[0].lng} />
-          
-          {/* NOTE : 왜 안 출력되나 모르겠음.. */}
-          {markers.map(marker => {
-            <Marker lat={marker.lat} lng={marker.lng} />
-          })}
-          
+          {renderMarkers}
+
         </GoogleMapReact>
       </div>
     );
