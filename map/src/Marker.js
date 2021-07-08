@@ -9,9 +9,8 @@ const MarkerImage = () =>
 
 class Marker extends React.Component {
   render() {
-    console.log(this.props.position)
     return (
-      <MarkerImage lat={this.props.position.lat} lng={this.props.position.lng} />
+      <MarkerImage lat={this.props.lat} lng={this.props.lng} />
     );
   }
 }
