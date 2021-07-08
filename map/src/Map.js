@@ -6,19 +6,18 @@ const API_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY
 
 class Map extends React.Component {
   state = {
-    lat: 0,
-    lng: 0
+    markers: [],
   }
 
   addMarker = async (data) => {
     console.log(data)
-    this.setState({
-      lat: data.lat,
-      lng: data.lng
+    this.setState(state => {
+      state.markers.concat({ lat: data.lat, lng: data.lng })
     })
   }
 
   render() {
+    const { markers } = this.state;
     return (
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
@@ -27,7 +26,9 @@ class Map extends React.Component {
           defaultZoom={17}
           onClick={this.addMarker}
         >
-          <Marker lat={this.state.lat} lng={this.state.lng} />
+          {markers.map(marker => {
+            <Marker position={marker} />
+          })}
         </GoogleMapReact>
       </div>
     );
