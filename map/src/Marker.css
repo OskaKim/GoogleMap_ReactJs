@@ -5,3 +5,9 @@
     bottom: 60px;
     right: 30px;
   }
+.MarkerTitle {
+  color: brown;
+  position: relative;
+  bottom: 110px;
+  right: 5px;
+}

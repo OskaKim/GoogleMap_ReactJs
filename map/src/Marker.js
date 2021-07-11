@@ -3,14 +3,16 @@ import MarkerImg from './images/simple_marker.png';
 import './Marker.css';
 
 const MarkerImage = () =>
-  <div>
-    <img src={MarkerImg} className="Marker" alt="marker" />
-  </div>
+  <img src={MarkerImg} className="Marker" alt="marker" />
 
 class Marker extends React.Component {
   render() {
     return (
-      <MarkerImage lat={this.props.lat} lng={this.props.lng} />
+      <div>
+        {console.log(this.props.title)}
+        <MarkerImage lat={this.props.lat} lng={this.props.lng} />
+        <label className="MarkerTitle">{this.props.title}</label>
+      </div>
     );
   }
 }
