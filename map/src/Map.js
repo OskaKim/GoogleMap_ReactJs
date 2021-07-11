@@ -19,7 +19,7 @@ class Map extends React.Component {
 
   render() {
     const { markers } = this.state;
-    const renderMarkers = markers.map((marker) => (<Marker lat={marker.lat} lng={marker.lng} />))
+    const renderMarkers = markers.map((marker, index) => (<Marker lat={marker.lat} lng={marker.lng} key={index} />))
 
     return (
       <div style={{ height: '100vh', width: '100%' }}>
