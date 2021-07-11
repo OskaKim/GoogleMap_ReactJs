@@ -17,12 +17,21 @@ class Map extends React.Component {
     console.log(this.state.markers)
   }
 
+  // 모든 마커 지우기
+  cleanMarkers = async() => {
+    this.setState({
+      markers: []
+    })
+    console.log("cleanMarkers", this.state.markers)
+  }
+
   render() {
     const { markers } = this.state;
     const renderMarkers = markers.map((marker, index) => (<Marker lat={marker.lat} lng={marker.lng} key={index} title={index + 1} />))
 
     return (
       <div style={{ height: '100vh', width: '100%' }}>
+        <button title="Solid Button" onClick={this.cleanMarkers}>clean markers</button>
         <GoogleMapReact
           bootstrapURLKeys={{ key: API_KEY }}
           defaultCenter={{ lat: 35.5362755, lng: 139.6355183 }}
